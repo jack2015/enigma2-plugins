@@ -100,16 +100,16 @@ msgid "Fan Control"
 msgstr "风扇控制"
 
 msgid "Fan Control 2"
-msgstr "风扇控制2"
+msgstr "风扇控制"
 
 msgid "Fan Control 2 - Monitor"
-msgstr "风扇控制2 - 监控"
+msgstr "风扇控制 - 监控"
 
 msgid "Fan Control 2 - Setup"
-msgstr "风扇控制2 - 设置"
+msgstr "风扇控制 - 设置"
 
 msgid "Fan Control 2 - Test"
-msgstr "风扇控制2 - 检测"
+msgstr "风扇控制 - 检测"
 
 msgid "Fan is not working!"
 msgstr "风扇未开启!"
