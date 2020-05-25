@@ -1314,12 +1314,12 @@ def autostart(reason, **kwargs):
 #					FClog("use new OpenWebIF")
 #				except:
 #					pass
-#		if not os.path.exists("/proc/stb/fp/fan_vlt"):
-#			Notifications.AddNotification(MessageBox, _("Box has no fancontrol hardware -> FC2 deactivated"), type=MessageBox.TYPE_INFO, timeout=10)
-		FClog("not supported, exit")
-		return
-#		session = kwargs["session"]
-#		session.open(FanControl2)
+		if not os.path.exists("/proc/stb/fp/fan_vlt"):
+			Notifications.AddNotification(MessageBox, _("Box has no fancontrol hardware -> FC2 deactivated"), type=MessageBox.TYPE_INFO, timeout=10)
+			FClog("not supported, exit")
+			return
+		session = kwargs["session"]
+		session.open(FanControl2)
 
 def selSetup(menuid, **kwargs):
 	if menuid != "system":
