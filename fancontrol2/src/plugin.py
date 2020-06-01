@@ -145,34 +145,14 @@ def setPWM(fanid, value):
 #Configuration
 config.plugins.FanControl = ConfigSubsection()
 
-if getImageDistro() in ('openspa') and getBoxType() in ('vusolo2'):
-	config.plugins.FanControl.Fan = ConfigSelection(choices = [("disabled", _("disabled")), ("aus", _("Control disabled")), ("3pin", _("3Pin")), ("4pin", _("4Pin")), ("4pinREG", _("4Pin (PID)"))], default = "3pin")
-	config.plugins.FanControl.StandbyOff = ConfigSelection(choices = [("false", _("no")), ("true", _("yes")), ("trueRec", _("yes, Except for Recording or HDD"))], default="true")
-	config.plugins.FanControl.minRPM = ConfigSlider(default = 900, increment = 50, limits = (0, 1500))
-	config.plugins.FanControl.maxRPM = ConfigSlider(default = 1100, increment = 50, limits = (500, 6000))
-	config.plugins.FanControl.temp = ConfigSlider(default = 42, increment = 1, limits = (30, 50))
-	config.plugins.FanControl.tempmax = ConfigSlider(default = 50, increment = 1, limits = (35, 55))
-	config.plugins.FanControl.pwm = ConfigSlider(default = 30, increment = 5, limits = (0, 255))
-	config.plugins.FanControl.vlt = ConfigSlider(default = 30, increment = 5, limits = (0, 255))
-elif getImageDistro() in ('openspa') and getBoxType() in ('vuduo2'):
-	config.plugins.FanControl.Fan = ConfigSelection(choices = [("disabled", _("disabled")), ("aus", _("Control disabled")), ("3pin", _("3Pin")), ("4pin", _("4Pin")), ("4pinREG", _("4Pin (PID)"))], default = "4pin")
-	config.plugins.FanControl.StandbyOff = ConfigSelection(choices = [("false", _("no")), ("true", _("yes")), ("trueRec", _("yes, Except for Recording or HDD"))], default="true")
-	config.plugins.FanControl.minRPM = ConfigSlider(default = 750, increment = 50, limits = (0, 1500))
-	config.plugins.FanControl.maxRPM = ConfigSlider(default = 1100, increment = 50, limits = (500, 6000))
-	config.plugins.FanControl.temp = ConfigSlider(default = 42, increment = 1, limits = (30, 50))
-	config.plugins.FanControl.tempmax = ConfigSlider(default = 50, increment = 1, limits = (35, 55))
-	config.plugins.FanControl.pwm = ConfigSlider(default = 125, increment = 5, limits = (0, 255))
-	config.plugins.FanControl.vlt = ConfigSlider(default = 165, increment = 5, limits = (0, 255))
-else:
-	config.plugins.FanControl.Fan = ConfigSelection(choices = [("disabled", _("disabled")), ("aus", _("Control disabled")), ("3pin", _("3Pin")), ("4pin", _("4Pin")), ("4pinREG", _("4Pin (PID)"))], default = "disabled")
-	config.plugins.FanControl.StandbyOff = ConfigSelection(choices = [("false", _("no")), ("true", _("yes")), ("trueRec", _("yes, Except for Recording or HDD"))], default="false")
-	config.plugins.FanControl.minRPM = ConfigSlider(default = 600, increment = 50, limits = (0, 1500))
-	config.plugins.FanControl.maxRPM = ConfigSlider(default = 3000, increment = 50, limits = (500, 6000))
-	config.plugins.FanControl.temp = ConfigSlider(default = 40, increment = 1, limits = (30, 50))
-	config.plugins.FanControl.tempmax = ConfigSlider(default = 50, increment = 1, limits = (35, 55))
-	config.plugins.FanControl.pwm = ConfigSlider(default = 130, increment = 5, limits = (0, 255))
-	config.plugins.FanControl.vlt = ConfigSlider(default = 255, increment = 5, limits = (0, 255))
-
+config.plugins.FanControl.Fan = ConfigSelection(choices = [("disabled", _("disabled")), ("aus", _("Control disabled")), ("3pin", _("3Pin")), ("4pin", _("4Pin")), ("4pinREG", _("4Pin (PID)"))], default = "disabled")
+config.plugins.FanControl.StandbyOff = ConfigSelection(choices = [("false", _("no")), ("true", _("yes")), ("trueRec", _("yes, Except for Recording or HDD"))], default="false")
+config.plugins.FanControl.minRPM = ConfigSlider(default = 600, increment = 50, limits = (0, 1500))
+config.plugins.FanControl.maxRPM = ConfigSlider(default = 3000, increment = 50, limits = (500, 6000))
+config.plugins.FanControl.temp = ConfigSlider(default = 40, increment = 1, limits = (30, 50))
+config.plugins.FanControl.tempmax = ConfigSlider(default = 50, increment = 1, limits = (35, 55))
+config.plugins.FanControl.pwm = ConfigSlider(default = 130, increment = 5, limits = (0, 255))
+config.plugins.FanControl.vlt = ConfigSlider(default = 255, increment = 5, limits = (0, 255))
 config.plugins.FanControl.ShowError = ConfigSelection(choices = [("false", _("do nothing")), ("true", _("display Info")), ("shutdown", _("Box Shutdown"))], default="true")
 config.plugins.FanControl.ShutdownTemp = ConfigInteger(default = 65,limits = (50, 80))
 config.plugins.FanControl.AddOverheat = ConfigInteger(default = 0,limits = (0, 9))
@@ -184,9 +164,8 @@ config.plugins.FanControl.EnableConsoleLog = ConfigYesNo(default = False)
 config.plugins.FanControl.EnableDataLog = ConfigYesNo(default = False)
 config.plugins.FanControl.EnableEventLog = ConfigYesNo(default = False)
 config.plugins.FanControl.CheckHDDTemp = ConfigSelection(choices = [("false", _("no")), ("true", _("yes")), ("auto", _("auto")), ("never", _("never"))], default="never")
-# config.plugins.FanControl.MonitorInExtension = ConfigYesNo(default = True)
 config.plugins.FanControl.FanControlInExtension = ConfigYesNo(default = True)
-config.plugins.FanControl.Multi = ConfigSelection(choices = [("1", "RPM"), ("2", "RPM/2")], default = "2")
+config.plugins.FanControl.Multi = ConfigSelection(choices = [("1", "RPM"), ("2", "RPM/2")], default = "1")
 config.plugins.FanControl.EnableThread = ConfigYesNo(default = True)
 
 def GetFanRPM():
@@ -209,37 +188,6 @@ def GetBox():
 		f.close()
 	return B
 
-# def isDMMdisabled():
-# 	value = False
-# 	if os.path.exists("/usr/lib/enigma2/python/Components/FanControl.py"):
-# 		FCfile = open("/usr/lib/enigma2/python/Components/FanControl.py", "r")
-# 		text=FCfile.read()
-# 		FCfile.close()
-# 		if text.find("#Disabled by FC2 config.misc.standbyCounter.addNotifier") is not -1:
-# 			value = True
-# 	return value
-#
-# def disableDMM():
-# 	if os.path.exists("/usr/lib/enigma2/python/Components/FanControl.py"):
-# 		FCfile = open("/usr/lib/enigma2/python/Components/FanControl.py", "r")
-# 		text=FCfile.read()
-# 		FCfile.close()
-# 		FCfile = open("/usr/lib/enigma2/python/Components/FanControl.py", "w")
-# 		text=text.replace("config.misc.standbyCounter.addNotifier","#Disabled by FC2 config.misc.standbyCounter.addNotifier")
-# 		text=FCfile.write(text)
-# 		FCfile.close()
-# 		FClog("Fancontrol disabled - please restart E2")
-#
-# def enableDMM():
-# 	if os.path.exists("/usr/lib/enigma2/python/Components/FanControl.py"):
-# 		FCfile = open("/usr/lib/enigma2/python/Components/FanControl.py", "r")
-# 		text=FCfile.read()
-# 		FCfile.close()
-# 		FCfile = open("/usr/lib/enigma2/python/Components/FanControl.py", "w")
-# 		text=text.replace("#Disabled by FC2 config.misc.standbyCounter.addNotifier","config.misc.standbyCounter.addNotifier")
-# 		text=FCfile.write(text)
-# 		FCfile.close()
-
 # the PI controller class
 class ControllerPI:
 	name = "PI Controller"
@@ -256,7 +204,6 @@ class ControllerPI:
  
 	def __init__(self, givenName = "PI Controller"):
 		self.name = givenName
-#		FClogE("%s : creating object" % self.name)
 
 	def ReturnInputError(self):
 		return self.inputError
@@ -264,8 +211,6 @@ class ControllerPI:
 	def ResetIntegrator(self):
 		FClogE("%s : integrator output %3.2f" % (self.name, self.integratorOutput))
 		self.integratorOutput = 0.0
-#		FClog("%s : integrator output now 0" % self.name)
-
 
 	def ScaleCtlError(self,errval,inputMax):
 		if errval == 0:
@@ -393,7 +338,6 @@ class FanControl2Test(Screen, ConfigListScreen):
 			self.rpm = GetFanRPM()
 			ok = ("OK" if config.plugins.FanControl.maxRPM.value <= self.rpm else ("!!<%d" % (config.plugins.FanControl.maxRPM.value)))
 			self["TextTest3"].setText(_("Max Fan %d rpm at PWM=255 (%s)") % (self.rpm, ok))
-# extended
 			self["TextTest4"].setText(_("Extended Control Range"))
 			setPWM(self.id,0)
 			time.sleep(10)
@@ -445,7 +389,6 @@ class FanControl2Test(Screen, ConfigListScreen):
 class FanControl2Monitor(Screen, ConfigListScreen):
 	skin = """
 		<screen position="center,center" size="600,260" title="Fan Control 2 - Monitor">
-
 			<widget source="TxtTemp0" render="Label" position="5,30" size="250,25" zPosition="1" font="Regular;17" halign="right" valign="center" backgroundColor="#25062748" transparent="1" />
 			<widget source="TxtTemp1" render="Label" position="5,50" size="250,25" zPosition="1" font="Regular;17" halign="right" valign="center" backgroundColor="#25062748" transparent="1" />
 			<widget source="TxtTemp2" render="Label" position="5,70" size="250,25" zPosition="1" font="Regular;17" halign="right" valign="center" backgroundColor="#25062748" transparent="1" />
@@ -469,7 +412,6 @@ class FanControl2Monitor(Screen, ConfigListScreen):
 			<widget source="ProTemp7" render="Progress" position="260,180" size="325,5" borderWidth="1" />
 			<widget source="ProHDD" render="Progress" position="260,200" size="325,5" borderWidth="1" />
 			<widget source="ProFan" render="Progress" position="260,220" size="325,5" borderWidth="1" />
-
 		</screen>"""
 
 	def __init__(self, session, args = None):
@@ -540,9 +482,7 @@ class FanControl2SpezialSetup(Screen, ConfigListScreen):
 	def __init__(self, session, args = None):
 		Screen.__init__(self, session)
 
-# 		config.plugins.FanControl.DisableDMM.value = isDMMdisabled()
 		self.HDDmode = config.plugins.FanControl.CheckHDDTemp.value
-#		self.MonitorMode = config.plugins.FanControl.MonitorInExtension.value
 		self.FanControlMode = config.plugins.FanControl.FanControlInExtension.value
 
 		self.list = []
@@ -550,10 +490,8 @@ class FanControl2SpezialSetup(Screen, ConfigListScreen):
 		self.list.append(getConfigListEntry(_("Box shutdown at Temperature (C)"), config.plugins.FanControl.ShutdownTemp))
 		self.list.append(getConfigListEntry(_("increases overheating protection to (C)"), config.plugins.FanControl.AddOverheat))
 		self.list.append(getConfigListEntry(_("read HDD-Temperature in HDD-Standby-Mode"), config.plugins.FanControl.CheckHDDTemp))
-# 		self.list.append(getConfigListEntry(_("disable System FanControl"), config.plugins.FanControl.DisableDMM))
 		self.list.append(getConfigListEntry(_("Show Fan Speed as"), config.plugins.FanControl.Multi))
 		self.list.append(getConfigListEntry(_("Show Plugin in Extension-Menu"), config.plugins.FanControl.FanControlInExtension))
-#		self.list.append(getConfigListEntry(_("Show Monitor in Extension-Menu"), config.plugins.FanControl.MonitorInExtension))
 		self.list.append(getConfigListEntry(_("Enable Console Logging"), config.plugins.FanControl.EnableConsoleLog))
 		self.list.append(getConfigListEntry(_("Number of WebIF-Log-Entries"), config.plugins.FanControl.LogCount))
 		self.list.append(getConfigListEntry(_("Logging path"), config.plugins.FanControl.LogPath))
@@ -590,17 +528,8 @@ class FanControl2SpezialSetup(Screen, ConfigListScreen):
 		if config.plugins.FanControl.LogPath.value[-1:] != "/":
 			config.plugins.FanControl.LogPath.value += "/"
 		NeuStart = False
-# 		if os.path.exists("/usr/lib/enigma2/python/Components/FanControl.py"):
-# 			if not isDMMdisabled() and config.plugins.FanControl.DisableDMM.value:
-# 				disableDMM()
-# 				NeuStart = True
-# 			if isDMMdisabled() and not config.plugins.FanControl.DisableDMM.value:
-# 				enableDMM()
-# 				NeuStart = True
 		if config.plugins.FanControl.CheckHDDTemp.value == "auto" and config.plugins.FanControl.CheckHDDTemp.value != self.HDDmode:
 			disableHDDread = True
-#		if config.plugins.FanControl.MonitorInExtension.value != self.MonitorMode:
-#			NeuStart = True
 		if config.plugins.FanControl.FanControlInExtension.value != self.FanControlMode:
 			NeuStart = True
 
@@ -649,7 +578,6 @@ class FanControl2Plugin(ConfigListScreen,Screen):
 			<widget source="key_yellow" render="Label" position="280,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#a08500" transparent="1" />
 			<widget source="key_blue" render="Label" position="420,0" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#18188b" transparent="1" />
 			<widget source="Version" render="Label" position="5,430" size="60,20" zPosition="1" font="Regular;11" halign="left" valign="center" backgroundColor="#25062748" transparent="1" />
-
 			<widget name="config" position="10,50" size="580,200" scrollbarMode="showOnDemand" />
 			<ePixmap position="20,260" size="560,3" pixmap="skin_default/div-h.png" transparent="1" alphatest="on" />
 			<widget source="introduction" render="Label" position="5,262" size="580,30" zPosition="10" font="Regular;21" halign="center" valign="center" backgroundColor="#25062748" transparent="1" />
@@ -894,7 +822,6 @@ def GetHDDtemp(OneTime):
 		for hdd in harddiskmanager.HDDList():
 			if hdd[1].model().startswith("ATA") and hdd[1].getDeviceName() not in FC2HDDignore:
 				sleeptime = int((time.time() - hdd[1].last_access))
-#				FClog("HDD Temp reading %s %s %ds %s" % (config.plugins.FanControl.CheckHDDTemp.value, disableHDDread, sleeptime, hdd[1].isSleeping()))
 				if config.plugins.FanControl.CheckHDDTemp.value == "true" or (config.plugins.FanControl.CheckHDDTemp.value == "auto" and not disableHDDread) or ((not hdd[1].isSleeping()) and sleeptime < 120) or OneTime == True:
 					(stat,wert)=ReadHDDtemp(hdd[1].getDeviceName())
 					if stat == 0:
@@ -942,7 +869,6 @@ class FC2Worker(Thread):
 	def run(self): 
 		global FritzTime
 		while True:
-#			print "worker a", self.index
 			zahl = Briefkasten.get()
 			if zahl == 1:
 				self.s.queryRun()
@@ -978,8 +904,6 @@ class FanControl2(Screen):
 		FClog("Starting up")
 		if os.path.exists("/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/data/diagram.class.org"):
 			os.rename("/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/data/diagram.class.org","/usr/lib/enigma2/python/Plugins/Extensions/FanControl2/data/diagram.class")
-# 		if not isDMMdisabled() and config.plugins.FanControl.DisableDMM.value:
-# 			disableDMM()
 		Box = GetBox()
 		HDDtestTemp()
 		GetHDDtemp(False)
@@ -1121,7 +1045,6 @@ class FanControl2(Screen):
 				FC2werte[1] = 0
 				FC2werte[2] = 0
 				FC2werte[3] = 0
-#				FC2werte[4] = str(AktHDD)[1:-1].replace(",","")
 				FC2werte[4] = max(AktHDD) if len(AktHDD) > 0 else 0
 				FCdata()
 				FirstStart = True
@@ -1219,7 +1142,6 @@ class FanControl2(Screen):
 					elif AktRPM-19 > ZielRPM:
 						AktPWM = (AktPWM-5 if AktRPM-ZielRPM > 100 else AktPWM-1)
 						setPWM(id,AktPWM)
-# 4
 						if AktPWM < 0 and AktVLT > 5:
 							AktVLT -= 1
 							setVoltage(id,AktVLT)
