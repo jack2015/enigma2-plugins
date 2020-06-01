@@ -1,136 +1,213 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FanControl2\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 10:58+0200\n"
+"POT-Creation-Date: 2011-07-13 18:27+Mitteleuropäische Sommerzeit\n"
 "PO-Revision-Date: \n"
 "Last-Translator: jerry <jerry00@quick.cz>\n"
 "Language-Team: jerry00 <jerry00@quick.cz>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#, python-format
-msgid "%s   %02d C"
-msgstr "%s   %02d C"
+#: FC2.txt:31
+msgid "below Tunerslot 4"
+msgstr "pod Tunerslot 4"
 
+#: FC2.txt:32
+msgid "near XILINX Spartan"
+msgstr "v blízkosti XILINX Spartan"
+
+#: FC2.txt:33
+msgid "under the WLAN"
+msgstr "v rámci WLAN"
+
+#: FC2.txt:34
+msgid "left of the Battery"
+msgstr "vlevo od baterie"
+
+#: FC2.txt:35
+msgid "left near Front-CI"
+msgstr "vlevo u předního-CI"
+
+#: FC2.txt:36
+msgid "left near Card-Slot"
+msgstr "vlevo u slotu karty"
+
+#: FC2.txt:37
+msgid "over Security Card"
+msgstr "nad Security Card"
+
+#: FC2.txt:38
+msgid "under the Fan"
+msgstr "pod funidlem"
+
+#: FC2.txt:128
 msgid "."
 msgstr ","
 
+#: FC2.txt:173
 msgid "3Pin"
 msgstr "3piny"
 
+#: FC2.txt:173
 msgid "4Pin"
 msgstr "4piny"
 
-msgid "4Pin (PID)"
-msgstr ""
-
-msgid "Action in case of Fan failure"
-msgstr "Akce při poruše ventilátoru"
-
-msgid "Auto-Delete Data older than (Days)"
-msgstr "Automaticky mazat data starší, než (dnů)"
-
-#, python-format
-msgid "Auto-Delete older %s Days"
-msgstr "Auto-mazat starší %s dnů"
-
-msgid "Box Shutdown"
-msgstr "Vypnout stb"
-
-msgid "Box has no fancontrol hardware -> FC2 deactivated"
-msgstr "Stb nemá odpovídající hardware -> FC2 je neaktivní"
-
-msgid "Box shutdown at Temperature (C)"
-msgstr "Vypnout box při teplotě (C)"
-
-msgid "Cancel"
-msgstr "Zrušit"
-
-msgid "Check"
-msgstr "Kontrola"
-
-msgid "Choose path"
-msgstr "Vyberte cestu"
-
+#: FC2.txt:173
 msgid "Control disabled"
 msgstr "Ovládání vypnuto"
 
-#, python-format
-msgid "Current rpm  %4d"
-msgstr "Aktuální otáčky  %4d"
+#: FC2.txt:173
+msgid "disabled"
+msgstr "vypnuto"
 
-#, python-format
-msgid "Current value: %s"
-msgstr "Aktuálně: %s"
+#: FC2.txt:174
+msgid "yes, Except for Recording or HDD"
+msgstr "ano, kromě záznamu a HDD"
 
-msgid "Delete"
-msgstr "Smazat"
+#: FC2.txt:174
+#: FC2.txt:187
+#: FC2.txt:190
+msgid "no"
+msgstr "ne"
 
-msgid "Delete older 48h"
-msgstr "Smazat starší, než 48h"
+#: FC2.txt:174
+#: FC2.txt:190
+msgid "yes"
+msgstr "ano"
 
-#, python-format
-msgid "Disk free : %d MByte"
-msgstr "HDD (Volné( : %d Mb"
+#: FC2.txt:181
+msgid "Box Shutdown"
+msgstr "Vypnout stb"
 
-msgid "Download"
-msgstr "Stáhnout"
+#: FC2.txt:181
+msgid "display Info"
+msgstr "zobrazit info"
 
-msgid "Enable Data Logging"
-msgstr "Zapnout logování dat"
+#: FC2.txt:181
+msgid "do nothing"
+msgstr "nedělat nic"
 
-msgid "Enable Event Logging"
-msgstr "Povolit logování událostí"
+#: FC2.txt:190
+msgid "auto"
+msgstr "automaticky"
 
-msgid "End temperature C"
-msgstr "Maximální T° C"
+#: FC2.txt:190
+msgid "never"
+msgstr "nikdy"
 
+#: FC2.txt:275
+msgid "please wait (until 3min)..."
+msgstr "čekejte prosím (asi 3min)..."
+
+#: FC2.txt:313
+msgid "Min Fan Start %d rpm at PWM=%d"
+msgstr "Od min. otáček %d rpm při PWM=%d"
+
+#: FC2.txt:319
+msgid "Min Fan Stop %d rpm at PWM=%d (%s)"
+msgstr "Do min. otáček %d rpm při PWM=%d (%s)"
+
+#: FC2.txt:325
+msgid "Max Fan %d rpm at PWM=255 (%s)"
+msgstr "Max. otáčky %d rpm při PWM=255 (%s)"
+
+#: FC2.txt:327
 msgid "Extended Control Range"
 msgstr "Rozšířená regulace"
 
-msgid "Fan Control"
-msgstr "Ovládání funidla"
+#: FC2.txt:337
+msgid "Min Fan Start %d rpm at VLT=%d and PWM=0"
+msgstr "Od min. otáček %d rpm při VLT=%d a PWM=0"
 
-#, fuzzy
-msgid "Fan Control 2"
-msgstr "Ovládání funidla"
+#: FC2.txt:340
+msgid "Min Fan Stop %d rpm at VLT=%d and PWM=0 (%s)"
+msgstr "Do min. otáček %d rpm při VLT=%d a PWM=0 (%s)"
 
-#, fuzzy
-msgid "Fan Control 2 - Monitor"
-msgstr "Fan Control2- Nastavení"
+#: FC2.txt:347
+msgid "Max Fan %d rpm at PWM=255 and VLT=255 (%s)"
+msgstr "Max. otáčky %d rpm při PWM=255 a VLT=255 (%s)"
 
-msgid "Fan Control 2 - Setup"
-msgstr "Fan Control2- Nastavení"
+#: FC2.txt:355
+msgid "Min Fan Start %d rpm at VLT=%d"
+msgstr "Od min. otáček %d rpm při VLT=%d"
 
-#, fuzzy
-msgid "Fan Control 2 - Test"
-msgstr "Fan Control2- Nastavení"
+#: FC2.txt:358
+msgid "Min Fan Stop %d rpm at VLT=%d (%s)"
+msgstr "Do min. otáček %d rpm při VLT=%d (%s)"
 
-msgid "Fan is not working!"
-msgstr "Funidlo nepracuje!"
+#: FC2.txt:363
+msgid "Max Fan %d rpm at VLT=255 (%s)"
+msgstr "Max. otáčky %d rpm při VLT=255 (%s)"
 
-#, fuzzy
-msgid "Fan off in Idle Mode"
-msgstr "Vypnout ve Standby"
+#: FC2.txt:435
+#: FC2.txt:437
+#: FC2.txt:441
+msgid "%s   %02d C"
+msgstr "%s   %02d C"
 
-msgid "Fan type"
-msgstr "Funidlo"
+#: FC2.txt:443
+msgid "press Info for HDD-Temp"
+msgstr "stiskněte Info pro T° HDD"
 
-#, fuzzy
-msgid "FanControl2 emergency, Box Shutdown now?"
-msgstr "Chyba FanControl2. Vypnout nyní stb??"
+#: FC2.txt:444
+#: FC2.txt:686
+msgid "Current rpm  %4d"
+msgstr "Aktuální otáčky  %4d"
 
-#, python-format
-msgid "File %s does not exists"
-msgstr "Soubor %s neexistuje"
+#: FC2.txt:474
+msgid "Action in case of Fan failure"
+msgstr "Akce při poruše ventilátoru"
 
-#, python-format
-msgid "Filesize : %d %sByte"
-msgstr "Velikost : %d %sbitů"
+#: FC2.txt:475
+msgid "Box shutdown at Temperature (C)"
+msgstr "Vypnout box při teplotě (C)"
 
+#: FC2.txt:476
+msgid "increases overheating protection to (C)"
+msgstr "Zvýšit ochranu proti přehřátí o (C)"
+
+#: FC2.txt:477
+msgid "read HDD-Temperature in HDD-Standby-Mode"
+msgstr "Načítat teplotu HDD v režimu Standby"
+
+#: FC2.txt:478
+msgid "disable DMM-FanControl"
+msgstr "Vypnout DMM ovládání funidla"
+
+#: FC2.txt:479
+msgid "Show Plugin in Extension-Menu"
+msgstr "Zobrazit plugin v extenzích"
+
+#: FC2.txt:480
+msgid "Show Monitor in Extension-Menu"
+msgstr "Zobrazit monitor v menu"
+
+#: FC2.txt:481
+msgid "Number of WebIF-Log-Entries"
+msgstr "Počet záznamů logů pro WebIF"
+
+#: FC2.txt:482
+msgid "Logging path"
+msgstr "Cesta k logu"
+
+#: FC2.txt:483
+msgid "Enable Data Logging"
+msgstr "Zapnout logování dat"
+
+#: FC2.txt:484
+msgid "Auto-Delete Data older than (Days)"
+msgstr "Automaticky mazat data starší, než (dnů)"
+
+#: FC2.txt:485
+msgid "Enable Event Logging"
+msgstr "Povolit logování událostí"
+
+#: FC2.txt:500
+msgid "Choose path"
+msgstr "Vyberte cestu"
+
+#: FC2.txt:532
 msgid ""
 "GUI needs a restart to apply the changes.\n"
 "Do you want to Restart the GUI now?"
@@ -138,201 +215,217 @@ msgstr ""
 "GUI se musí restartovat pro uplatnění změn.\n"
 "Chcete GUI nyní restartovat?"
 
-msgid "Help"
-msgstr "Pomoc"
-
-msgid "Information"
-msgstr "Informace"
-
-msgid "Initial PWM"
-msgstr "Počáteční PWM"
-
-msgid "Initial Voltage"
-msgstr "Spouštěcí napětí"
-
-msgid "Logging path"
-msgstr "Cesta k logu"
-
-#, python-format
-msgid "Logging-Path: %s"
-msgstr "Cesta k logu: %s"
-
-#, python-format
-msgid "Max Fan %d rpm at PWM=255 (%s)"
-msgstr "Max. otáčky %d rpm při PWM=255 (%s)"
-
-#, python-format
-msgid "Max Fan %d rpm at PWM=255 and VLT=255 (%s)"
-msgstr "Max. otáčky %d rpm při PWM=255 a VLT=255 (%s)"
-
-#, python-format
-msgid "Max Fan %d rpm at VLT=255 (%s)"
-msgstr "Max. otáčky %d rpm při VLT=255 (%s)"
-
-#, python-format
-msgid "Min Fan Start %d rpm at PWM=%d"
-msgstr "Od min. otáček %d rpm při PWM=%d"
-
-#, python-format
-msgid "Min Fan Start %d rpm at VLT=%d"
-msgstr "Od min. otáček %d rpm při VLT=%d"
-
-#, python-format
-msgid "Min Fan Start %d rpm at VLT=%d and PWM=0"
-msgstr "Od min. otáček %d rpm při VLT=%d a PWM=0"
-
-#, python-format
-msgid "Min Fan Stop %d rpm at PWM=%d (%s)"
-msgstr "Do min. otáček %d rpm při PWM=%d (%s)"
-
-#, python-format
-msgid "Min Fan Stop %d rpm at VLT=%d (%s)"
-msgstr "Do min. otáček %d rpm při VLT=%d (%s)"
-
-#, python-format
-msgid "Min Fan Stop %d rpm at VLT=%d and PWM=0 (%s)"
-msgstr "Do min. otáček %d rpm při VLT=%d a PWM=0 (%s)"
-
-msgid "Number of WebIF-Log-Entries"
-msgstr "Počet záznamů logů pro WebIF"
-
-#, python-format
-msgid "PID Ctl Err %03.2f %%"
-msgstr ""
-
-#, python-format
-msgid "PWM  %03d"
-msgstr "PWM  %03d"
-
+#: FC2.txt:533
 msgid "Restart GUI now?"
 msgstr "Restartovat GUI nyní?"
 
-msgid "Save"
-msgstr "Uložit"
+#: FC2.txt:599
+msgid "Fan type"
+msgstr "Funidlo"
 
-msgid "Sensors"
-msgstr "Senzory"
+#: FC2.txt:600
+msgid "Fan off in Standby"
+msgstr "Vypnout ve Standby"
 
-msgid "Show Fan Speed as"
-msgstr "Zobrazit rychlost funidla jako"
-
-msgid "Show Monitor in Extension-Menu"
-msgstr "Zobrazit monitor v menu"
-
-msgid "Show Plugin in Extension-Menu"
-msgstr "Zobrazit plugin v extenzích"
-
-msgid "Speed"
-msgstr "Otáčky"
-
-msgid "Static temp C"
-msgstr "Klidová T° C"
-
-#, python-format
-msgid "Target rpm  %4d"
-msgstr "Cílové otáčky  %4d"
-
-msgid "Temperature"
-msgstr "Teplota"
-
-#, python-format
-msgid "Temperature C  %4.1f"
-msgstr "Teplota C° %4.1f"
-
-msgid "Voltage"
-msgstr "Napětí"
-
-#, python-format
-msgid "Voltage  %03d"
-msgstr "Napětí  %03d"
-
-msgid "active"
-msgstr "aktivní"
-
-msgid "auto"
-msgstr "automaticky"
-
-msgid "below Tunerslot 4"
-msgstr "pod Tunerslot 4"
-
-#, python-format
-msgid "currentRPM:%d targetRPM:%d Temp:%4.1f"
-msgstr "aktuálníOT:%d cílovéOT:%d Tep:%4.1f"
-
-msgid "disabled"
-msgstr "vypnuto"
-
-msgid "display Info"
-msgstr "zobrazit info"
-
-msgid "do nothing"
-msgstr "nedělat nic"
-
-msgid "increases overheating protection to (C)"
-msgstr "Zvýšit ochranu proti přehřátí o (C)"
-
-msgid "left near Card-Slot"
-msgstr "vlevo u slotu karty"
-
-msgid "left near Front-CI"
-msgstr "vlevo u předního-CI"
-
-msgid "left of the Battery"
-msgstr "vlevo od baterie"
-
-msgid "max Speed rpm"
-msgstr "Maximální otáčky"
-
+#: FC2.txt:601
 msgid "min Speed rpm"
 msgstr "Minimální otáčky"
 
-msgid "near XILINX Spartan"
-msgstr "v blízkosti XILINX Spartan"
+#: FC2.txt:602
+msgid "max Speed rpm"
+msgstr "Maximální otáčky"
 
-msgid "never"
-msgstr "nikdy"
+#: FC2.txt:603
+msgid "Static temp C"
+msgstr "Klidová T° C"
 
-msgid "no"
-msgstr "ne"
+#: FC2.txt:604
+msgid "End temperature C"
+msgstr "Maximální T° C"
 
-msgid "not active"
-msgstr "neaktivní"
+#: FC2.txt:605
+msgid "Initial Voltage"
+msgstr "Spouštěcí napětí"
 
-msgid "over Security Card"
-msgstr "nad Security Card"
+#: FC2.txt:606
+msgid "Initial PWM"
+msgstr "Počáteční PWM"
 
-msgid "please set fan type (3Pin or 4Pin)"
-msgstr ""
+#: FC2.txt:611
+msgid "Cancel"
+msgstr "Zrušit"
 
-msgid "please wait (until 3min)..."
-msgstr "čekejte prosím (asi 3min)..."
+#: FC2.txt:612
+msgid "Save"
+msgstr "Uložit"
 
-msgid "press Info for HDD-Temp"
-msgstr "stiskněte Info pro T° HDD"
+#: FC2.txt:613
+msgid "Check"
+msgstr "Kontrola"
 
-msgid "read HDD-Temperature in HDD-Standby-Mode"
-msgstr "Načítat teplotu HDD v režimu Standby"
+#: FC2.txt:614
+msgid "Help"
+msgstr "Pomoc"
 
+#: FC2.txt:651
+msgid "Current value: %s"
+msgstr "Aktuálně: %s"
+
+#: FC2.txt:684
+msgid "Temperature C  %4.1f"
+msgstr "Teplota C° %4.1f"
+
+#: FC2.txt:685
+msgid "Target rpm  %4d"
+msgstr "Cílové otáčky  %4d"
+
+#: FC2.txt:687
+msgid "Voltage  %03d"
+msgstr "Napětí  %03d"
+
+#: FC2.txt:688
+msgid "PWM  %03d"
+msgstr "PWM  %03d"
+
+#: FC2.txt:713
+msgid "Information"
+msgstr "Informace"
+
+#: FC2.txt:713
 msgid "readme.txt"
 msgstr "readmede.txt"
 
-msgid "setup Fancontol inStandby mode"
-msgstr ""
+#: FC2.txt:863
+msgid "FanControl2 nouzovka, Box Shutdown now?"
+msgstr "Chyba FanControl2. Vypnout nyní stb??"
 
+#: FC2.txt:1032
+msgid "currentRPM:%d targetRPM:%d Temp:%4.1f"
+msgstr "aktuálníOT:%d cílovéOT:%d Tep:%4.1f"
+
+#: FC2.txt:1039
+msgid "Fan is not working!"
+msgstr "Funidlo nepracuje!"
+
+#: FC2.txt:1093
+msgid "Box has no fancontrol hardware -> FC2 deactivated"
+msgstr "Stb nemá odpovídající hardware -> FC2 je neaktivní"
+
+#: FC2.txt:1174
+msgid "Temperature"
+msgstr "Teplota"
+
+#: FC2.txt:1175
+msgid "Speed"
+msgstr "Otáčky"
+
+#: FC2.txt:1176
+msgid "Voltage"
+msgstr "Napětí"
+
+#: FC2.txt:1183
+msgid "Sensors"
+msgstr "Senzory"
+
+#: FC2.txt:1278
+#: FC2.txt:1314
+msgid "active"
+msgstr "aktivní"
+
+#: FC2.txt:1281
+#: FC2.txt:1317
 msgid "turn off"
 msgstr "vypnuto"
 
+#: FC2.txt:1284
+#: FC2.txt:1320
+msgid "not active"
+msgstr "neaktivní"
+
+#: FC2.txt:1287
+#: FC2.txt:1323
 msgid "turn on"
 msgstr "zapnuto"
 
-msgid "under the Fan"
-msgstr "pod funidlem"
+#: FC2.txt:1292
+#: FC2.txt:1294
+#: FC2.txt:1328
+#: FC2.txt:1330
+msgid "Filesize : %d %sByte"
+msgstr "Velikost : %d %sbitů"
 
-msgid "under the WLAN"
-msgstr "v rámci WLAN"
+#: FC2.txt:1296
+#: FC2.txt:1332
+msgid "Disk free : %d MByte"
+msgstr "HDD (Volné( : %d Mb"
 
-msgid "yes"
-msgstr "ano"
+#: FC2.txt:1299
+#: FC2.txt:1335
+msgid "Download"
+msgstr "Stáhnout"
 
-msgid "yes, Except for Recording or HDD"
-msgstr "ano, kromě záznamu a HDD"
+#: FC2.txt:1303
+#: FC2.txt:1339
+msgid "Delete"
+msgstr "Smazat"
+
+#: FC2.txt:1307
+msgid "Delete older 48h"
+msgstr "Smazat starší, než 48h"
+
+#: FC2.txt:1310
+#: FC2.txt:1347
+msgid "File %s does not exists"
+msgstr "Soubor %s neexistuje"
+
+#: FC2.txt:1349
+msgid "Logging-Path: %s"
+msgstr "Cesta k logu: %s"
+
+#: FC2.txt:1350
+msgid "Auto-Delete older %s Days"
+msgstr "Auto-mazat starší %s dnů"
+
+#: FC2.txt:xxxx
+msgid "Show Fan Speed as"
+msgstr "Zobrazit rychlost funidla jako"
+
+#: FC2.txt:yyyy
+msgid "Fan Control 2 - Setup"
+msgstr "Fan Control2- Nastavení"
+
+#: FC2.txt:yyyy
+msgid "Fan Control"
+msgstr "Ovládání funidla"
+
+#:
+msgid "OK"
+msgstr "OK"
+
+#:
+msgid "Enable read HDD-Temperature"
+msgstr "Povolit načítání teploty HDD"
+
+#:
+msgid "Show Fan Error"
+msgstr "Zobrazit chyby funidla"
+
+#:
+msgid "Show Fan rpm"
+msgstr "Zobrazit OT funidla"
+
+#:
+msgid "Switch RPM/2 <> RPM?"
+msgstr "Přepnout RPM/2 <> RPM?"
+
+#:
+msgid "Regulation off"
+msgstr "Regulace VYP"
+
+#:
+msgid "off"
+msgstr "vyp"
+
+#:
+msgid "Fan rpm current: %s target: %s (%sC)"
+msgstr "Aktuální OT funidla: %s cílové: %s (%sC)"

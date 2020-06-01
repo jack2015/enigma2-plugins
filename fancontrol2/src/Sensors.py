@@ -41,12 +41,12 @@ class Sensors:
 		value = -1
 		sensor = self.sensors_list[sensorid]
 		if sensor[0] == self.TYPE_TEMPERATURE:
+			f = open("%s/value" % sensor[3], "r")
 			try:
-				f = open("%s/value" % sensor[3], "r")
 				value = int(f.readline().strip())
-				f.close()
 			except:
 				pass
+			f.close()
 		return value
 
 	def addSensors(self):
