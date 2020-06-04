@@ -283,13 +283,6 @@ multirc/Makefile
 multirc/src/Makefile
 multirc/meta/Makefile
 
-netcaster/Makefile
-netcaster/meta/Makefile
-netcaster/src/Makefile
-netcaster/src/bin/Makefile
-netcaster/src/bin/interface/Makefile
-netcaster/src/etc/Makefile
-
 networkbrowser/Makefile
 networkbrowser/meta/Makefile
 networkbrowser/po/Makefile
