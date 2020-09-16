@@ -78,7 +78,6 @@ SUBDIRS = \
 	vfdcontrol \
 	webcamviewer \
 	werbezapper \
-	zaphistorybrowser \
 	zapstatistic \
 	zdfmediathek
 
