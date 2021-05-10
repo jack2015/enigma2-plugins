@@ -37,31 +37,35 @@ from Components.config import ConfigSubsection, ConfigSubList, ConfigInteger, co
 from setup import initConfig, WeatherPluginEntriesListConfigScreen
 
 config.plugins.WeatherPlugin = ConfigSubsection()
-config.plugins.WeatherPlugin.entriescount =  ConfigInteger(0)
+config.plugins.WeatherPlugin.entriescount = ConfigInteger(0)
 config.plugins.WeatherPlugin.Entries = ConfigSubList()
 initConfig()
 
 UserAgent = "Mozilla/5.0 (X11; U; Linux x86_64; de; rv:1.9.0.15) Gecko/2009102815 Ubuntu/9.04 (jaunty) Firefox/3."
 
+
 class WeatherIconItem:
-	def __init__(self, url = "", filename = "", index = -1, error = False):
+	def __init__(self, url="", filename="", index=-1, error=False):
 		self.url = url
 		self.filename = filename
 		self.index = index
 		self.error = error
 
+
 def getXML(url):
 	return getPage(url, agent=UserAgent)
+
 
 def download(item):
 	return downloadPage(item.url, file(item.filename, 'wb'), agent=UserAgent)
 
 
-def main(session,**kwargs):
+def main(session, **kwargs):
 	session.open(WeatherPlugin)
 
+
 def Plugins(**kwargs):
-	list = [PluginDescriptor(name=_("Weather Plugin"), description=_("Show Weather Forecast"), where = [PluginDescriptor.WHERE_PLUGINMENU, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main)]
+	list = [PluginDescriptor(name=_("Weather Plugin"), description=_("Show Weather Forecast"), where=[PluginDescriptor.WHERE_PLUGINMENU, PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main)]
 	return list
 
 
@@ -89,7 +93,7 @@ class WeatherPlugin(Screen):
 			<widget render="Label" source="weekday4_temp" position="550,150" zPosition="1" size="100,20" halign="center" valign="bottom" font="Regular;16" transparent="1"/>
 			<widget render="Label" source="statustext" position="0,0" zPosition="1" size="664,190" font="Regular;20" halign="center" valign="center" transparent="1"/>
 		</screen>"""
-	
+
 	def __init__(self, session):
 		Screen.__init__(self, session)
 		self.title = _("Weather Plugin")
@@ -111,7 +115,7 @@ class WeatherPlugin(Screen):
 		i = 1
 		while i < 5:
 			self["weekday%s" % i] = StaticText()
-			self["weekday%s_icon" %i] = WeatherIcon()
+			self["weekday%s_icon" % i] = WeatherIcon()
 			self["weekday%s_temp" % i] = StaticText()
 			i += 1
 		del i
@@ -155,7 +159,7 @@ class WeatherPlugin(Screen):
 			self.setItem()
 
 	def setItem(self):
-		self.weatherPluginEntry = config.plugins.WeatherPlugin.Entries[self.weatherPluginEntryIndex-1]
+		self.weatherPluginEntry = config.plugins.WeatherPlugin.Entries[self.weatherPluginEntryIndex - 1]
 		self.clearFields()
 		self.startRun()
 
@@ -168,18 +172,18 @@ class WeatherPlugin(Screen):
 		i = 1
 		while i < 5:
 			self["weekday%s" % i].text = ""
-			self["weekday%s_icon" %i].hide()
+			self["weekday%s_icon" % i].hide()
 			self["weekday%s_temp" % i].text = ""
 			i += 1
 
-	def errorIconDownload(self, error = None, item = None):
+	def errorIconDownload(self, error=None, item=None):
 		item.error = True
 
 	def finishedIconDownload(self, result, item):
 		if not item.error:
-			self.showIcon(item.index,item.filename)
+			self.showIcon(item.index, item.filename)
 
-	def showIcon(self,index, filename):
+	def showIcon(self, index, filename):
 		self["weekday%s_icon" % index].updateIcon(filename)
 		self["weekday%s_icon" % index].show()
 
@@ -207,9 +211,9 @@ class WeatherPlugin(Screen):
 						if items2.tag == "condition":
 							self["condition"].text = _("Current: %s") % items2.attrib.get("data").encode("utf-8", 'ignore')
 						elif items2.tag == "temp_f" and metric == 0:
-							self["currentTemp"].text =  ("%s °F" % items2.attrib.get("data").encode("utf-8", 'ignore')) 
+							self["currentTemp"].text = ("%s °F" % items2.attrib.get("data").encode("utf-8", 'ignore'))
 						elif items2.tag == "temp_c" and metric == 1:
-							self["currentTemp"].text =  ("%s °C" % items2.attrib.get("data").encode("utf-8", 'ignore')) 
+							self["currentTemp"].text = ("%s °C" % items2.attrib.get("data").encode("utf-8", 'ignore'))
 						elif items2.tag == "humidity":
 							self["humidity"].text = items2.attrib.get("data").encode("utf-8", 'ignore')
 						elif items2.tag == "wind_condition":
@@ -234,18 +238,18 @@ class WeatherPlugin(Screen):
 							parts = url.split("/")
 							filename = self.appdir + parts[-1]
 							if not os_path.exists(filename):
-								IconDownloadList.append(WeatherIconItem(url = url,filename = filename, index = index))
+								IconDownloadList.append(WeatherIconItem(url=url, filename=filename, index=index))
 							else:
-								self.showIcon(index,filename)
+								self.showIcon(index, filename)
 		if len(IconDownloadList) != 0:
 			ds = defer.DeferredSemaphore(tokens=len(IconDownloadList))
-			downloads = [ds.run(download,item ).addErrback(self.errorIconDownload, item).addCallback(self.finishedIconDownload,item) for item in IconDownloadList]
+			downloads = [ds.run(download, item).addErrback(self.errorIconDownload, item).addCallback(self.finishedIconDownload, item) for item in IconDownloadList]
 			finished = defer.DeferredList(downloads).addErrback(self.error)
 
 	def config(self):
 		self.session.openWithCallback(self.setupFinished, WeatherPluginEntriesListConfigScreen)
 
-	def setupFinished(self, index, entry = None):
+	def setupFinished(self, index, entry=None):
 		self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entriescount.value
 		if self.weatherPluginEntryCount >= 1:
 			if entry is not None:
@@ -261,7 +265,7 @@ class WeatherPlugin(Screen):
 		self.clearFields()
 		self.startRun()
 
-	def error(self, error = None):
+	def error(self, error=None):
 		if error is not None:
 			self.clearFields()
 			self["statustext"].text = str(error.getErrorMessage())
@@ -289,4 +293,3 @@ class WeatherIcon(Pixmap):
 		if (self.IconFileName != new_IconFileName):
 			self.IconFileName = new_IconFileName
 			self.picload.startDecode(self.IconFileName)
-
