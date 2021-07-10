@@ -38,11 +38,12 @@ class EPGSearchSetup(Screen, ConfigListScreen):
 			self,
 			[
 				getConfigListEntry(_("Length of History"), config.plugins.epgsearch.history_length, _("How many entries to keep in the search history at most. 0 disables history entirely!")),
+				getConfigListEntry(_("Modify History item"), config.plugins.epgsearch.history_modify, _("When history item is selected, it can be modified for new searching.")),
 				getConfigListEntry(_("Add \"Search\" Button to EPG"), config.plugins.epgsearch.add_search_to_epg, _("If this setting is enabled, the plugin adds a \"Search\" Button to the regular EPG.")),
 				getConfigListEntry(_("Type blue Button"), config.plugins.epgsearch.type_button_blue, _("Select type: 'Search and Select channel' or 'Search'.")),
 				getConfigListEntry(_("Use Picons"), config.plugins.epgsearch.picons, _("If this setting is enabled, the plugin adds picons.")),
 				getConfigListEntry(_("Encoding Search to EPG"), config.plugins.epgsearch.encoding, _("Choosing an encoding. \"UTF-8\" to search for EPG cyrillic.")),
-				getConfigListEntry(_("Search type"), config.plugins.epgsearch.search_type, _("Select type for search, \"partial match\" for the most extensive search.")),
+				getConfigListEntry(_("Search type"), config.plugins.epgsearch.search_type, _("Select type for search, \"partial match\" for the most extensive search, \"partial description\" for the most description search.")),
 				getConfigListEntry(_("Add \"Search event in EPG\" to event menu"), config.plugins.epgsearch.show_in_furtheroptionsmenu, _("Adds \"Search event in EPG\" item into the event menu (needs restart GUI)")),
 				getConfigListEntry(_("Add \"Search event in EPG\" to channel menu"), config.plugins.epgsearch.search_in_channelmenu, _("Adds \"Search event in EPG\" item into the channel selection context menu (needs restart GUI)")),
 				getConfigListEntry(_("Search strictness"), config.plugins.epgsearch.search_case, _("Select whether or not you want to enforce case correctness.")),
