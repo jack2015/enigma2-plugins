@@ -265,8 +265,6 @@ class PartnerboxEntriesListConfigScreen(Screen, HelpableScreen):
 		try:
 			sel = self["entrylist"].l.getCurrentSelection()[0]
 		except:
-			sel = None
-		if sel is None:
 			return
 		self.session.openWithCallback(self.updateList, PartnerboxEntryConfigScreen, sel)
 
@@ -285,27 +283,25 @@ class PartnerboxEntriesListConfigScreen(Screen, HelpableScreen):
 
 	def moveUp(self):
 		if self.edit and self.idx >= 1:
-				self.moveDirection(-1)
+			self.moveDirection(-1)
 
 	def moveDown(self):
 		if self.edit and self.idx < config.plugins.Partnerbox.entriescount.value - 1:
-				self.moveDirection(1)
+			self.moveDirection(1)
 
 	def moveDirection(self, direction):
-			self["entrylist"].moveToIndex(self.idx)
-			tmp = config.plugins.Partnerbox.Entries[self.idx]
-			config.plugins.Partnerbox.Entries[self.idx] = config.plugins.Partnerbox.Entries[self.idx + direction]
-			config.plugins.Partnerbox.Entries[self.idx + direction] = tmp
-			self.updateList()
-			self.idx += direction
-			self["entrylist"].moveToIndex(self.idx)
+		self["entrylist"].moveToIndex(self.idx)
+		tmp = config.plugins.Partnerbox.Entries[self.idx]
+		config.plugins.Partnerbox.Entries[self.idx] = config.plugins.Partnerbox.Entries[self.idx + direction]
+		config.plugins.Partnerbox.Entries[self.idx + direction] = tmp
+		self.updateList()
+		self.idx += direction
+		self["entrylist"].moveToIndex(self.idx)
 
 	def keyDelete(self):
 		try:
 			sel = self["entrylist"].l.getCurrentSelection()[0]
 		except:
-			sel = None
-		if sel is None:
 			return
 		self.session.openWithCallback(self.deleteConfirm, MessageBox, _("Really delete this Partnerbox Entry?"))
 
@@ -551,7 +547,7 @@ class PartnerboxEntryConfigScreen(ConfigListScreen, Screen):
 			self.newmode = 0
 			self.current = entry
 
-		ConfigListScreen.__init__(self, [], session)
+		ConfigListScreen.__init__(self, [], session, on_change=self.changedEntry)
 
 		self.initConfig()
 
@@ -560,28 +556,25 @@ class PartnerboxEntryConfigScreen(ConfigListScreen, Screen):
 			getConfigListEntry(_("Name"), self.current.name),
 			getConfigListEntry(_("IP"), self.current.ip),
 			getConfigListEntry(_("Port"), self.current.port),
-			getConfigListEntry(_("Enigma Type"), self.current.type),
+			getConfigListEntry(_("Service type"), self.current.type),
 			getConfigListEntry(_("Password"), self.current.password),
 			getConfigListEntry(_("Servicelists/EPG"), self.current.useinternal),
 			getConfigListEntry(_("Zap to service when streaming"), self.current.zaptoservicewhenstreaming)
 		]
 		self["key_yellow"].setText(" ")
 		self.mac = getConfigListEntry(_("MAC"), self.current.mac)
+		self.useWOL = _("Use Wake-on-LAN")
 		if self.current.enigma.value == "0":
-			list.append(getConfigListEntry(_("Use Wake-on-LAN"), self.current.usewakeonlan))
+			list.append(getConfigListEntry(self.useWOL, self.current.usewakeonlan))
 			if self.current.usewakeonlan.value:
 				list.append(self.mac)
 				self["key_yellow"].setText(_("Get MAC"))
 		self["config"].list = list
 		self["config"].l.setList(list)
 
-	def keyLeft(self):
-		ConfigListScreen.keyLeft(self)
-		self.initConfig()
-
-	def keyRight(self):
-		ConfigListScreen.keyRight(self)
-		self.initConfig()
+	def changedEntry(self):
+		if self["config"].getCurrent()[0] == self.useWOL:
+			self.initConfig()
 
 	def keySave(self):
 		if self.newmode == 1:
