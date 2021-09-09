@@ -68,7 +68,6 @@ SUBDIRS = \
 	trafficinfo \
 	transcodingsetup \
 	transmission \
-	terrestrialscan \
 	tvcharts \
 	unwetterinfo \
 	valixdcontrol \
