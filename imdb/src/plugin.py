@@ -23,12 +23,17 @@ from Components.Sources.StaticText import StaticText
 from Components.Sources.Boolean import Boolean
 from Tools.Directories import fileExists, resolveFilename, SCOPE_PLUGINS, SCOPE_SKIN_IMAGE
 
+from StringIO import StringIO
+
 import contextlib
+import gzip
 import os
 import random
 import re
 import threading
 import urllib2
+import zlib
+
 
 try:
 	import htmlentitydefs
@@ -81,9 +86,16 @@ class Downloader(object):
 	failureCallback = None
 	downloadTimeout = 10  # seconds
 
-	def __init__(self, url, file):
+	_headers = {
+		'user-agent': 'curl/7.74.0',
+		'accept': '*/*'
+	}
+
+	def __init__(self, url, file, headers=None):
 		self.url = url
 		self.file = file
+		if headers is not None:
+			self._headers = headers
 
 	def addSuccessCallback(self, successCallback):
 		self.successCallback = successCallback
@@ -101,8 +113,18 @@ class Downloader(object):
 	def _download(self):
 		tmpfile = self.file + '.' + str(random.randint(10000, 99999)) + '.tmp'
 		try:
-			with open(tmpfile, 'w') as o, contextlib.closing(urllib2.urlopen(self.url, timeout=self.downloadTimeout)) as i:
-				o.write(i.read())
+			request = urllib2.Request(self.url, None, self._headers)
+			with open(tmpfile, 'w') as o, contextlib.closing(urllib2.urlopen(request, timeout=self.downloadTimeout)) as i:
+				encoding = i.info().get('Content-Encoding')
+				if encoding == 'gzip':
+					buf = StringIO(i.read())
+					f = gzip.GzipFile(fileobj=buf)
+					data = f.read()
+				elif encoding == 'deflate':
+					data = zlib.decompress(i.read())
+				else:
+					data = i.read()
+				o.write(data)
 			os.rename(tmpfile, self.file)
 			if self.successCallback:
 				self.successCallback('')
@@ -332,7 +354,7 @@ class IMDB(Screen, HelpableScreen):
 
 			self.extrainfomask = re.compile(
 			'(?:.*?data-testid="plot-xl".*?>(?P<outline>.+?)</span)?'
-			'(?:.*?<h3 class="ipc-title__text">(?P<g_synopsis>Storyline)</h3>.*?<div class="ipc-html-content-inner-div">(?P<synopsis>.+?)<span)?'
+			'(?:.*?<h3 class="ipc-title__text">(?P<g_synopsis>Storyline)</h3>.*?<div class="ipc-html-content-inner-div">(?P<synopsis>.+?)</div)?'
 			'(?:.*?data-testid="storyline-plot-keywords">(?P<keywords>.+?)\d+\s+(?:mehr|more).*?</div>)?'
 			'(?:.*?<a.*?>(?P<g_tagline>Werbezeile|Taglines?)</a>.*?<li.*?<span.*?>(?P<tagline>.+?)<)?'
 			'(?:.*?<a.*?>(?P<g_cert>Altersfreigabe|Certificate|Motion Picture Rating \(MPAA\))</a>.*?<div.*?<ul.*?<li.*?<span.*?>(?P<cert>.*?)</span>)?'
@@ -902,7 +924,7 @@ class IMDB(Screen, HelpableScreen):
 									Extratext += _("Unknown category")
 							except IndexError: # there's no g_keywords anymore
 								pass
-							if category == "trivia" or category == "quotes" or category == "connections" or category == "runtime":
+							if category == "trivia" or category == "quotes" or category == "connections" or category == "runtime" or category == 'synopsis':
 								txt = ' '.join(self.htmltags.sub(' ', extrainfos.group(category).replace("\n", ' ').replace("<br>", '\n').replace("<br />", '\n')).replace(' |' + self.NBSP, '').replace(self.NBSP, ' ').split())
 							elif category == "keywords":
 								Extratext += "\n" + _("Keywords") # there's no g_keywords anymore
